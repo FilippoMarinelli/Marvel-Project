@@ -1,40 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Title, Card, TextCard, CardFlex } from './styled';
-import { Container } from '../../styles/GlobalStyles';
+import { Link } from 'react-router-dom';
+import { Card, TextCard, CardFlex } from './styled';
+import { Container, Title } from '../../styles/GlobalStyles';
+import axios, { keysApi } from '../../services/axios';
 
 export default function Home() {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    async function getCharacters() {
+      const response = await axios.get(
+        `/characters?ts=${keysApi.ts}&apikey=${keysApi.publicKey}&hash=${keysApi.createHash}&limit=9`
+      );
+      setCharacters(response.data.data.results);
+    }
+    getCharacters();
+  }, []);
+
   return (
     <Container>
       <Title>Marvel Characters</Title>
       <CardFlex>
-        <Card>
-          <img
-            src="https://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
-            alt="aa"
-          />
-          <TextCard>
-            <p>Nome do personagem</p>
-          </TextCard>
-        </Card>
-        <Card>
-          <img
-            src="https://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg"
-            alt="aa"
-          />
-          <TextCard>
-            <p>Nome do personagem</p>
-          </TextCard>
-        </Card>
-        <Card>
-          <img
-            src="http://i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec.jpg"
-            alt="aa"
-          />
-          <TextCard>
-            <p>Nome do personagem</p>
-          </TextCard>
-        </Card>
+        {characters.map((character) => (
+          <Link key={character.id} to={`/${character.id}`}>
+            {console.log(character)}
+            <Card>
+              <img
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt="aa"
+              />
+              <TextCard>
+                <p>{character.name}</p>
+              </TextCard>
+            </Card>
+          </Link>
+        ))}
       </CardFlex>
     </Container>
   );

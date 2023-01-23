@@ -15,7 +15,7 @@ export default function Header() {
           />
         </Link>
         <form>
-          <input type="text" placeholder="Nome do personagem" />
+          <input type="text" placeholder="Nome do Personagem" />
           <button type="submit">
             <FaSearch size={12} />
           </button>

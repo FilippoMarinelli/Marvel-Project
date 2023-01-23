@@ -37,6 +37,7 @@ export default createGlobalStyle`
 
   button:hover{
     background: #790427;
+    transition: all 0.2s ease-in-out;
   }
 
   a {
@@ -57,4 +58,10 @@ export const Container = styled.section`
   border-radius: 0.4rem;
   box-shadow: 0 0 1rem rgb(0, 0, 0, 0.4);
   color: black;
+`;
+
+export const Title = styled.h1`
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 5rem;
 `;
