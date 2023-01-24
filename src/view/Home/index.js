@@ -24,7 +24,6 @@ export default function Home() {
       <CardFlex>
         {characters.map((character) => (
           <Link key={character.id} to={`/${character.id}`}>
-            {console.log(character)}
             <Card>
               <img
                 src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
