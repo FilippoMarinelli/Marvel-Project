@@ -55,7 +55,3 @@ export const CardFlex = styled.div`
     }
   }
 `;
-
-export function newPopUp() {
-  window.open('popup.html', 'popup');
-}

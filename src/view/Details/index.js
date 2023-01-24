@@ -28,6 +28,7 @@ export default function Details() {
 
     getCharacterById();
   }, []);
+
   if (!character) {
     return (
       <Container>
@@ -35,6 +36,7 @@ export default function Details() {
       </Container>
     );
   }
+
   return (
     <>
       {character.map((charac) => (

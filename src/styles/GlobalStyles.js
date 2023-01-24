@@ -14,6 +14,7 @@ export default createGlobalStyle`
     font-family: sans-serif;
     background: ${colors.primaryColor};
     color: ${colors.primaryColor};
+    padding-bottom: 175rem;
   }
 
   html {
@@ -58,6 +59,20 @@ export const Container = styled.section`
   border-radius: 0.4rem;
   box-shadow: 0 0 1rem rgb(0, 0, 0, 0.4);
   color: black;
+
+  form input {
+    height: 3.5rem;
+    border-radius: 0.4rem;
+    font-size: 1.3rem;
+    width: 30rem;
+    font-weight: 600;
+    padding: 1.5rem;
+    margin-bottom: 5rem;
+  }
+  form input,
+  form button {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 `;
 
 export const Title = styled.h1`

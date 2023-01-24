@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
 
 import { Nav } from './styled';
 
@@ -14,12 +13,6 @@ export default function Header() {
             alt="MarvelLogo"
           />
         </Link>
-        <form>
-          <input type="text" placeholder="Nome do Personagem" />
-          <button type="submit">
-            <FaSearch size={12} />
-          </button>
-        </form>
       </div>
     </Nav>
   );

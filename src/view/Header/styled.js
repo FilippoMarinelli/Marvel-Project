@@ -31,14 +31,4 @@ export const Nav = styled.nav`
     color: #fff;
     font-weight: bold;
   }
-
-  form input {
-    height: 3.5rem;
-    border-radius: 0.4rem;
-    border: none;
-    font-size: 1.3rem;
-    width: 30rem;
-    font-weight: 600;
-    padding: 1.5rem;
-  }
 `;
