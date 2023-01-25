@@ -13,6 +13,7 @@ export default function Home() {
   const [redirect, setRedirect] = useState(false);
 
   const { actualPage, setActualPage } = usePagination();
+
   useEffect(() => {
     async function getCharacters(page) {
       const virtualPage = (page - 1) * 9;
@@ -33,6 +34,7 @@ export default function Home() {
   if (redirect) {
     return <Redirect to={`/search/${characterName}`} />;
   }
+
   return (
     <Container>
       <Title>Marvel Characters</Title>
