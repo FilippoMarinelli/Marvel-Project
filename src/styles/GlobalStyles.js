@@ -14,7 +14,6 @@ export default createGlobalStyle`
     font-family: sans-serif;
     background: ${colors.primaryColor};
     color: ${colors.primaryColor};
-    padding-bottom: 175rem;
   }
 
   html {

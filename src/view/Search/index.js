@@ -32,7 +32,7 @@ export default function Search() {
       <Title>Marvel Character</Title>
       <CardFlex>
         {character.map((charac) => (
-          <Link to={`/${charac.id}`} key={charac.id}>
+          <Link to={`/details/${charac.id}`} key={charac.id}>
             <Card>
               <img
                 src={`${charac.thumbnail.path}.${charac.thumbnail.extension}`}

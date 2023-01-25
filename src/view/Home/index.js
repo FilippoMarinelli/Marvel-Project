@@ -2,24 +2,28 @@ import React, { useEffect, useState } from 'react';
 
 import { Link, Redirect } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import { Card, TextCard, CardFlex } from './styled';
+import { Card, TextCard, CardFlex, DivPagination } from './styled';
 import { Container, Title } from '../../styles/GlobalStyles';
 import axios, { keysApi } from '../../services/axios';
+import usePagination from '../../hooks/usePagination';
 
 export default function Home() {
   const [characters, setCharacters] = useState([]);
   const [characterName, setCharacterName] = useState('');
   const [redirect, setRedirect] = useState(false);
 
+  const { actualPage, setActualPage } = usePagination();
   useEffect(() => {
-    async function getCharacters() {
+    async function getCharacters(page) {
+      const virtualPage = (page - 1) * 9;
+
       const response = await axios.get(
-        `/characters?ts=${keysApi.ts}&apikey=${keysApi.publicKey}&hash=${keysApi.createHash}&limit=9`
+        `/characters?ts=${keysApi.ts}&apikey=${keysApi.publicKey}&hash=${keysApi.createHash}&limit=9&offset=${virtualPage}`
       );
       setCharacters(response.data.data.results);
     }
-    getCharacters();
-  }, []);
+    getCharacters(actualPage);
+  }, [actualPage]);
 
   function handleClick(e) {
     e.preventDefault();
@@ -47,7 +51,7 @@ export default function Home() {
       </form>
       <CardFlex>
         {characters.map((character) => (
-          <Link key={character.id} to={`/${character.id}`}>
+          <Link key={character.id} to={`/details/${character.id}`}>
             <Card>
               <img
                 src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
@@ -60,6 +64,15 @@ export default function Home() {
           </Link>
         ))}
       </CardFlex>
+      <DivPagination>
+        <select onChange={(e) => setActualPage(e.target.value)}>
+          {Array(174)
+            .fill('')
+            .map((_, index) => {
+              return <option key={index + 1}>{index + 1}</option>;
+            })}
+        </select>
+      </DivPagination>
     </Container>
   );
 }
