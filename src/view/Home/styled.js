@@ -17,7 +17,7 @@ export const Card = styled.div`
   img {
     width: 100%;
     border-radius: 1rem;
-    max-height: 28.98rem;
+    height: 28.98rem;
   }
 `;
 export const TextCard = styled.div`
