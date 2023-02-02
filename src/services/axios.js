@@ -2,7 +2,7 @@ import axios from 'axios';
 import md5 from 'md5';
 
 export default axios.create({
-  baseURL: 'http://gateway.marvel.com/v1/public/',
+  baseURL: 'https://gateway.marvel.com/v1/public/',
 });
 
 const ts = Math.floor(Date.now() / 1000);
